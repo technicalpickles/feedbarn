@@ -5,9 +5,13 @@ $:.unshift File.dirname(__FILE__) + '/../lib'
 require 'feedbarn'
 
 farmer = FeedBarn::Farmer.new
-feeds = farmer.gather
-barn = FeedBarn::Barn.new('My barn', feeds)
-view = FeedBarn::View.new(barn)
+# feeds = farmer.gather
+
+barn = farmer.build 'my-barn'
+
+farmer.fill barn
+
+view = farmer.showcase barn
 
 Dir.mkdir('output') unless File.exists?('output')
 open('output/index.html', 'w') do |file|

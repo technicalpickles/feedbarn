@@ -1,10 +1,10 @@
 module FeedBarn
   class Barn
-    attr_accessor :name, :feeds
+    attr_accessor :name, :config, :feeds
     
-    def initialize(name, feeds)
+    def initialize(name, config)
       self.name = name
-      self.feeds = feeds
+      self.config = config
     end
     
     def entries
@@ -13,6 +13,14 @@ module FeedBarn
         sort_entries!
       end
       @entries
+    end
+    
+    def title
+      config['title']
+    end
+    
+    def urls
+      config['feeds'].collect {|feed| feed['url']}
     end
     
     private

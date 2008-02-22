@@ -4,13 +4,15 @@ require 'open-uri'
 require 'yaml'
 
 module FeedBarn
+  # The gatherer of feeds, builder of barns
   class Farmer
     CONFIG = 'config/feeds.yaml'
     
-    attr_accessor :feeds, :config
+    attr_accessor :config, :barns
     
     def initialize()
-      self.config = YAML.load_file('config/feeds.yaml')
+      self.config = YAML.load_file('config/settings.yml')
+      self.barns = {}
     end
     
     def feed_urls
@@ -19,16 +21,32 @@ module FeedBarn
       }
     end
     
-    def gather
-      self.feeds = []
+    def build barn_name
+      barn_config = load_config_for barn_name
+      barns[barn_config['title']] = Barn.new(barn_name, barn_config)
+    end
+    
+    
+    
+    def fill barn
+      barn.feeds = []
 
-      self.config['feeds'].each do |feed_config|
+      load_config_for(barn.name)['feeds'].each do |feed_config|
         url = feed_config['url']
         downloaded_feed = FeedNormalizer::FeedNormalizer.parse(open(url))
-        feeds << Feed.new(downloaded_feed, feed_config)
+        barn.feeds << Feed.new(downloaded_feed, feed_config)
       end
        
-      self.feeds
+      barn.feeds
+    end
+    
+    def showcase barn
+      FeedBarn::View.new(barn)
+    end
+    
+    private
+    def load_config_for barn_name
+      YAML.load_file("config/#{barn_name}.yml")
     end
   end
 end
