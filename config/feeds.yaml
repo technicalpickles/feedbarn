@@ -3,7 +3,7 @@ name: My aggregation
 
 feeds:
     -
-        name: Technical Pickles
+        title: Technical Pickles
         url: http://localhost:3000/posts.atom
     # -
     #     name: Technorati

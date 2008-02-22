@@ -9,7 +9,7 @@ feeds = farmer.gather
 barn = FeedBarn::Barn.new('My barn', feeds)
 view = FeedBarn::View.new(barn)
 
-Dir.mkdir('output')
+Dir.mkdir('output') unless File.exists?('output')
 open('output/index.html', 'w') do |file|
   file.write view.render
   file.close

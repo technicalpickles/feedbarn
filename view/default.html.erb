@@ -21,7 +21,12 @@
       </div>
       
       <div id="navigation">
-        
+        <h3>Feeds</h3>
+        <ul>
+        <% barn.feeds.each do |feed| %>
+        <li><a href="<%= feed.url %>"><%= feed.title %></a></li>
+        <% end %>
+        </ul>
       </div>
       <div id="footer">
         

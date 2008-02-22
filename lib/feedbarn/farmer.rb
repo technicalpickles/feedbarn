@@ -22,8 +22,10 @@ module FeedBarn
     def gather
       self.feeds = []
 
-      feed_urls.each do |url|
-        self.feeds << FeedNormalizer::FeedNormalizer.parse(open(url))
+      self.config['feeds'].each do |feed_config|
+        url = feed_config['url']
+        downloaded_feed = FeedNormalizer::FeedNormalizer.parse(open(url))
+        feeds << Feed.new(downloaded_feed, feed_config)
       end
        
       self.feeds
