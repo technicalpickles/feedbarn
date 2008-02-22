@@ -1,0 +1,19 @@
+layout: default
+name: My aggregation
+
+feeds:
+    -
+        name: Technical Pickles
+        url: http://localhost:3000/posts.atom
+    # -
+    #     name: Technorati
+    #     url: http://feeds.technorati.com/search/gentoo?authority=a4&language=en   
+    # -
+    #     name: Google News
+    #     url: http://news.google.com/news?hl=en&ned=us&q=gentoo&ie=UTF-8&output=atom   
+    # -
+    #     name: Twitter
+    #     url: http://terraminds.com/twitter/update-rss?query=gentoo&
+    # -
+        # name: Google Blog Search
+        # url: http://blogsearch.google.com/blogsearch_feeds?hl=en&q=gentoo&ie=utf-8&num=10&output=atom
