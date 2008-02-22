@@ -11,10 +11,12 @@ barn = farmer.build 'my-barn'
 
 farmer.fill barn
 
-view = farmer.showcase barn
+showcase = farmer.showcase barn
 
-Dir.mkdir('output') unless File.exists?('output')
-open('output/index.html', 'w') do |file|
-  file.write view.render
-  file.close
-end
+showcase.output
+
+# Dir.mkdir('output') unless File.exists?('output')
+# open('output/index.html', 'w') do |file|
+#   file.write showcase.render
+#   file.close
+# end

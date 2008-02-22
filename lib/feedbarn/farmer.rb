@@ -26,8 +26,6 @@ module FeedBarn
       barns[barn_config['title']] = Barn.new(barn_name, barn_config)
     end
     
-    
-    
     def fill barn
       barn.feeds = []
 
@@ -41,7 +39,7 @@ module FeedBarn
     end
     
     def showcase barn
-      FeedBarn::View.new(barn)
+      FeedBarn::Showcase.new(barn)
     end
     
     private
