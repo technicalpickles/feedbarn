@@ -3,10 +3,30 @@
     <title><%= barn.name %></title>
   </head>
   <body>
-    <ul>
-      <% barn.entries.each do |entry| %>
-      <li><a href="<%= entry.url %>"><%= entry.title %></a></li>
-      <% end %>
-    </ul>
+    <div id="container">
+      <div id="header">
+        <h1><%= barn.name %></h1>
+      </div>
+      <div id="content" class="hfeed">
+        <% barn.entries.each do |entry| %>
+        <div class="hentry">
+          <h2 class="entry-title"><a href="<%= entry.url %>"><%= entry.title %></a></h2>
+          <abbr class="updated published" title="blarg"><%= entry.date_published %></abbr>
+          <a href="#"><%= entry.author %></a>
+          <div class="entry-content">
+            <%= CGI.unescapeHTML entry.content %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      
+      <div id="navigation">
+        
+      </div>
+      <div id="footer">
+        
+      </div>
+    </div>
+
   </body>
 </html>
