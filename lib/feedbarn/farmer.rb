@@ -38,7 +38,7 @@ module FeedBarn
       barn.feeds
     end
     
-    def showcase barn
+    def prepare_showcase barn
       FeedBarn::Showcase.new(barn)
     end
     

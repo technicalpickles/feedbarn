@@ -11,7 +11,7 @@ barn = farmer.build 'my-barn'
 
 farmer.fill barn
 
-showcase = farmer.showcase barn
+showcase = farmer.prepare_showcase barn
 
 showcase.output
 
