@@ -15,7 +15,7 @@ module FeedBarn
       self.barns = {}
       
       self.blueprints = {}
-      Dir.glob('config/barns/*.yml').each do |config_path|
+      barn_config_paths.each do |config_path|
         barn_name = yank_barn_name_from config_path
         self.blueprints[barn_name] = load_blueprint_from config_path
       end
@@ -54,6 +54,10 @@ module FeedBarn
     
     def yank_barn_name_from filename
       File.basename(filename).gsub(/\.yml$/,'')
+    end
+    
+    def barn_config_paths
+      Dir.glob('config/barns/*.yml')
     end
   end
 end

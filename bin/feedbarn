@@ -14,9 +14,3 @@ farmer.fill barn
 showcase = farmer.prepare_showcase barn
 
 showcase.output
-
-# Dir.mkdir('output') unless File.exists?('output')
-# open('output/index.html', 'w') do |file|
-#   file.write showcase.render
-#   file.close
-# end
