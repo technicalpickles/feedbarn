@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require File.dirname(__FILE__) + '/../lib/feedbarn/barn.rb'
+
+
+barn = FeedBarn::Barn.new('My barn', [])
+
+puts barn.name
