@@ -8,9 +8,9 @@ require 'feedbarn'
 farmer = FeedBarn::Farmer.new
 feeds = farmer.gather
 barn = FeedBarn::Barn.new('My barn', feeds)
+view = FeedBarn::View.new(barn)
 
-puts barn.name
-
-barn.entries.each do |entry|
-  puts entry.title
+open('index.html', 'w') do |file|
+  file.write view.render
+  file.close
 end

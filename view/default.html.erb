@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title><%= barn.name %></title>
+  </head>
+  <body>
+    <ul>
+      <% barn.entries.each do |entry| %>
+      <li><a href="<%= entry.url %>"><%= entry.title %></a></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
